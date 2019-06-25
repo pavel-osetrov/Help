@@ -1,0 +1,23 @@
+# создаем хэндлер
+$ch = curl_init();
+
+# передаём url
+curl_setopt($ch, CURLOPT_URL, $url);
+
+# результат возвращать строкой (не в браузер)
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+# юзер, пароль
+curl_setopt($ch, CURLOPT_USERPWD, "$user:$pass");
+
+# таймаут (если сервер долго отвечает)
+curl_setopt($ch, CURLOPT_TIMEOUT, 180);
+
+# в выводе показывать хэдэр
+curl_setopt($ch, CURLOPT_HEADER, TRUE);
+
+# в выводе НЕ показывать BODY
+curl_setopt($ch, CURLOPT_NOBODY, TRUE);
+
+# вывод в файл
+curl_setopt($ch, CURLOPT_FILE, $fh);

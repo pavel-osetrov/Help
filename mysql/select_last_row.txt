@@ -1,0 +1,2 @@
+SELECT COUNT(*) FROM yourTable;
+SELECT * FROM yourTable LIMIT useTheCountHere - 1,1;

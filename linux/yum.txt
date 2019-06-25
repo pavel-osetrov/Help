@@ -1,0 +1,11 @@
+# refresh the package index and check for available updates
+yum check-update
+
+# install
+yum install <packadge>
+
+# list
+yum list instaled
+
+#search
+yum search <packadge>

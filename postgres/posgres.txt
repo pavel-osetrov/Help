@@ -1,0 +1,37 @@
+# restart
+systemctl restart postgresql-11.service
+
+# all tables
+select * from pg_catalog.pg_tables;
+
+# change tablespace
+alter table "tableOtusTest" set tablespace pg_default;
+	or
+\dt
+
+# all tablespaces
+select * from pg_tablespace;
+
+# all databases
+\l
+
+# currecnt connection info
+\conninfo
+
+# connect to DB
+\connect "otusTest"
+
+# new tablespace
+create tablespace "tsOtusTest" location '/db';
+
+# new database
+create database "otusTestTempl1" template template1;
+	or
+create database "otusTestTempl1";
+
+# new user with 'createdb' priveleges
+create user timofey with createdb password 'password';
+
+# list users/roles
+select * from pg_roles;
+

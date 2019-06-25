@@ -1,0 +1,18 @@
+# Если изменился пароль для группового почтового ящика phoenixkpi@ms.huawei.com
+	
+	нужно изменить пароль в файле /etc/exim/exim.conf
+
+# retry time not reached for any host
+
+	Если у вас появилась данная ошибка, то сделайте следующее:
+	cd /var/spool/exim/db
+	rm -f retry retry.lockfile
+	rm -f wait-remote_smtp wait-remote_smtp.lockfile
+	service exim restart
+	
+	Или воспользуйтесь данными командами:
+	/usr/sbin/exim_tidydb -t 1d /var/spool/exim retry > /dev/null
+	/usr/sbin/exim_tidydb -t 1d /var/spool/exim reject > /dev/null
+	/usr/sbin/exim_tidydb -t 1d /var/spool/exim wait-remote_smtp > /dev/null
+	/scripts/courierup — force
+	/scripts/eximup –force

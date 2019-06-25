@@ -1,0 +1,20 @@
+# dump only routines functions and triggers
+mysqldump --routines --no-create-info --no-data --no-create-db --skip-opt имя_базы > имя_файла.sql
+
+# create dump to archive
+mysqldump -u<user_name> -p --opt --ignore-table=<table_name> --single-transaction --routines --triggers <schema_name> | gzip > <backup_name>.gz
+
+# create dump to regular file
+mysqldump -u<user_name> -p --opt --ignore-table=<table_name> --single-transaction --routines --triggers <schema_name> > <backup_file_name>
+
+# load dump into DB
+mysql -u<user_name> -p <schema_name> --comments < <backup_file_name>
+
+# parse "create table" statement from dump
+sed -n '/CREATE TABLE <table_name>/,/SET character_set_client/p' <backup_file> > <output_file>
+
+# parse "insert" statement from dump (table data)
+sed -n '/LOCK TABLES `<table_name>`/,/UNLOCK TABLES/p' <backup_file> > <output_file>
+
+# example of sed from gz with pipe
+gunzip -c <backup_file_gz> | sed -n '/LOCK TABLES `<table_name>`/,/UNLOCK TABLES/p' > <output_file>

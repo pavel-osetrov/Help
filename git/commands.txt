@@ -1,0 +1,13 @@
+# stop tracking files
+1. add pattern(s) to .gitignore
+2. git rm --cached [on each file you want to untrack]
+3. git update-index --assume-unchanged [path]  # без этого шага тоже сработало
+
+# file change history
+git log -- <файл>
+
+# file change history with diff
+git log -p -- <файл>
+
+# file change history with diff including remane history
+git log --follow -p -- <файл>

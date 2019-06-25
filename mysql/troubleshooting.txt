@@ -1,0 +1,16 @@
+show global status where Variable_name like '%err%';
+
+mysqladmin flush-hosts
+FLUSH HOSTS;
+
+# текущие запросы в БД
+SHOW FULL PROCESSLIST;
+
+# убить запрос
+kill {id запроса};
+
+# показать таймаут
+SHOW VARIABLES LIKE 'wait_timeout';
+
+
+connect_timeout — количество секунд, в течение которых сервер mysql ожидает пакет подключения, прежде чем прервать соединение.

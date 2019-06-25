@@ -1,0 +1,16 @@
+GZIP TAR
+--------
+# comress dir
+tar -zcvf <archive_name>.tar.gz <dir_to_archive_name>
+
+# decompress dir
+tar -zxvf <archive_name>.tar.gz
+
+
+EXAMPLES
+--------
+# comress dir "html_dev"
+tar -zcvf html_dev.tar.gz html_dev
+
+# decompress "html_dev.tar.gz"
+tar -zxvf html_dev.tar.gz

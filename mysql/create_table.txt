@@ -1,0 +1,12 @@
+# copy table with indexes and triggers
+CREATE TABLE newtable LIKE oldtable; 
+INSERT newtable SELECT * FROM oldtable;
+
+# copy table (just structure and data)
+CREATE TABLE newtable AS SELECT * FROM oldtable;
+
+# copy table without data (but with indexes and triggers)
+CREATE TABLE newtable LIKE oldtable;
+
+# copy table only structure
+CREATE TABLE newtable AS SELECT * FROM oldtable LIMIT 0;

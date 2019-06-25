@@ -1,0 +1,20 @@
+# search service
+systemctl list-units|grep postgresql
+
+# list all services
+systemctl
+
+# apache
+systemctl restart httpd
+
+# mysql
+service mysqld restart
+
+# samba
+service smb restart
+
+# ssh
+service sshd restart
+
+# exim
+systemctl restart exim

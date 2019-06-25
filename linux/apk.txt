@@ -1,0 +1,4 @@
+# установка на alpine на примере пакета php7-dev
+apk update
+apk search php7-dev
+apk add php7-dev

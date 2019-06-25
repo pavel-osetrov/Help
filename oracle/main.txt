@@ -1,0 +1,5 @@
+# version
+select * from v$version;
+
+# all accessible tables
+SELECT * FROM all_tables;

@@ -1,0 +1,14 @@
+# current year
+date("Y");
+
+# current month
+date("n");
+
+# первый день месяца
+$monthStart = date("Y-m",strtotime("first day of -6 month"));
+
+# 
+$previousWeek = (new DateTime('last monday -1week')) -> format('W');
+
+# 
+$mondayOfPreviousWeek = date("Y-m-d",strtotime( "previous monday -1week" ));

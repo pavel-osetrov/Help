@@ -1,0 +1,45 @@
+USERS
+-----
+# logged in users
+users
+
+# add user
+useradd <username>
+
+# default parameters for useradd command
+cat /etc/default/useradd
+
+# list all users
+cat /etc/passwd
+cat /etc/passwd | awk -F: '{print $1}'
+
+PASSWORD
+--------
+# set password
+passwd <username> <password>
+
+# generate random password
+openssl rand -base64 32
+
+# encrypted user passwords
+cat /etc/shadow
+
+# shadow password suite config
+cat /etc/login.defs
+
+GROUPS
+------
+# list groups
+cat /etc/group
+
+# add user to group
+sudo usermod -a -G <groupname> <username>
+
+# user's groups
+groups <username>
+
+# edit sudo privilege
+visudo
+
+# list sudoers
+cat /etc/sudoers

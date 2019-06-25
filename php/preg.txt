@@ -1,0 +1,22 @@
+# поиск первого вхождения
+preg_match
+
+# глобальный поиск <pattern> в <source> (в <source> учитываются переносы строк)
+preg_match_all('/<pattern>/m',<source>,<results>)
+
+# глобальный поиск <pattern> в <source> (<source> воспринимается как одна строка)
+preg_match_all('/<pattern>/',<source>,<results>)
+
+# пример парсинга кукей (результат складывается в $matches[1])
+preg_match_all("/^Set-Cookie:\s(.+);\sp/m", $html_header, $matches);
+
+REGULAR EXPRESSIONS
+-------------------
+# find file names before very last dot only
+^.+?(?=\.[^.]*$)
+
+# kpi_name check - returns 1 if OK, else 0
+preg_match('/^k(mob|tf)\d+$/i',$kpi_name)
+
+# month rough check - returns 1 if OK, else 0
+preg_match('/^\d+$/',$month)

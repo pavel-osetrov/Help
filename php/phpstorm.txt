@@ -1,0 +1,6 @@
+navigate class    Ctrl+N
+navigate file    Ctrl+Shift+N
+code completion    Ctrl+Space
+find usages    Alt+F7
+quick documentation    Ctrl+Q
+refactor/rename Shift+F6

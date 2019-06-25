@@ -1,0 +1,8 @@
+# refresh configuration
+service smb reload
+
+# restart service
+service smb restart
+
+# list samba users
+pdbedit -L -v

@@ -1,0 +1,15 @@
+# set request type
+-X POST
+# define data for POST
+-d "var=123"
+# set header
+-H "Content-Type: application/x-www-form-urlencoded"
+# set another header
+-H "X-Additional-header: 123"
+# detailed output
+-v
+# show headers in response
+-D -
+
+# example
+curl -d "string=(()())" -X POST -H "Content-Type: application/x-www-form-urlencoded" -v -D - 127.0.0.1

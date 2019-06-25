@@ -1,0 +1,39 @@
+CHANGE OWNER
+------------
+# change owner and group
+chown <owner>:<group> <file>
+
+# change owner
+chown <owner> <file>
+
+# change group
+chown :<group> <file>
+
+# recursive
+chown -R <owner>:<group> <dir>
+
+EXAMPLES 1
+----------
+# for apache
+chmod -R 664 /var/www/html/dokuwiki
+chmod 771 /var/www/html/dokuwiki
+find /var/www/html/dokuwiki -type d -exec chmod 771 {} +
+
+EXAMPLES 2
+----------
+-- group
+sudo chgrp -R apache /var/www/html
+sudo find /var/www/html -type d -exec chmod g+rx {} +
+sudo find /var/www/html -type f -exec chmod g+r {} +
+-- user
+sudo chown -R apache /var/www/html/
+sudo find /var/www/html -type d -exec chmod u+rwx {} +
+sudo find /var/www/html -type f -exec chmod u+rw {} +
+-- other
+sudo chmod -R o-rwx /var/www/html/
+-- butsior
+sudo chown -R abutsior /var/www/html/dokuwiki
+sudo chown -R abutsior /var/www/html/pbc
+
+sudo chmod -R 775 /var/www/html/pbc
+sudo chmod -R 775 /var/www/html/dokuwiki

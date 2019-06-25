@@ -1,0 +1,34 @@
+# list of all containers
+docker ps -a
+
+# list of images
+docker images
+
+# run bash of container with port forwarding
+docker run -it -p 80:80 <image> bash
+	# exit without stoping container
+	Ctrl+p Ctrl+q
+
+# resume bash work in running container
+docker attach <container>
+
+# launch container as daemon with specifying name and port forwarding
+docker run --name <name> -d -p 80:80 nginx
+
+# launch bash in running container
+docker exec -it <container> bash
+
+# enable extension for php
+docker-php-ext-enable xdebug
+
+# official images (nginx)
+-open https://hub.docker.com/_/nginx
+-choose one you want
+-run docker pull with prefix "nginx:"
+-for example "docker pull nginx:1.14.2-alpine"
+
+# official images (php)
+-open https://hub.docker.com/_/php
+-choose one you want
+-run docker pull with prefix "php:"
+-for example "docker pull php:7.2-fpm-alpine"

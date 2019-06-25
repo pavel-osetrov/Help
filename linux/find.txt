@@ -1,0 +1,2 @@
+# искать обычные файлы по имени
+find /var/www -type f -name "reports_lvl_2_nssmob.php"

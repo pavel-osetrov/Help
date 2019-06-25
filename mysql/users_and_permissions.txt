@@ -1,0 +1,58 @@
+USERS
+-----
+# list
+SELECT * FROM mysql.user;
+
+# create
+CREATE USER '<user_name>'@'%' IDENTIFIED BY '<password>';
+CREATE USER '<user_name>'@'<host>' IDENTIFIED BY '<password>';
+
+# password
+SET PASSWORD for <user_name> = '<password>' 
+
+# modify
+ALTER USER '<user_name>'@'%' IDENTIFIED BY '<password>';
+ALTER USER '<user_name>'@'<host>' IDENTIFIED BY '<password>';
+ALTER USER 'root'@'localhost' IDENTIFIED BY '<password>';
+
+PERMISSIONS
+-----------
+# grant all permissions
+GRANT ALL ON <schema>.<table> TO '<user_name>'@'<host>';
+GRANT ALL ON *.* TO '<user_name>'@'%';
+# grant extended(admin) all permissions
+GRANT ALL PRIVILEGES ON <schema>.<table> TO '<user_name>'@'<host>' WITH GRANT OPTION;
+
+# revoke permissions
+REVOKE DELETE, UPDATE ON contacts FROM 'smithj'@'localhost';
+
+# show permissions
+SHOW GRANTS FOR '<user_name>'@'%';
+
+# FLUSH to apply changes
+FLUSH PRIVILEGES;
+
+EXAMPLES
+--------
+# grant on specified table
+GRANT SELECT, REFERENCES, SHOW VIEW ON phoenix_kpi.bad_kpi TO 'zhuravlev'@'%';
+# grant on specified schema
+GRANT INSERT ON moz.* TO 'moz_user'@'%';
+GRANT CREATE ON moz.* TO 'moz_user'@'%';
+GRANT SELECT ON moz.* TO 'moz_user'@'%';
+GRANT UPDATE ON moz.* TO 'moz_user'@'%';
+GRANT DELETE ON moz.* TO 'moz_user'@'%';
+GRANT DROP ON moz.* TO 'moz_user'@'%';
+GRANT REFERENCES ON moz.* TO 'moz_user'@'%';
+GRANT INDEX ON moz.* TO 'moz_user'@'%';
+GRANT ALTER ON moz.* TO 'moz_user'@'%';
+GRANT CREATE TEMPORARY TABLES ON moz.* TO 'moz_user'@'%';
+GRANT LOCK TABLES ON moz.* TO 'moz_user'@'%';
+GRANT EXECUTE ON moz.* TO 'moz_user'@'%';
+GRANT CREATE VIEW ON moz.* TO 'moz_user'@'%';
+GRANT SHOW VIEW ON moz.* TO 'moz_user'@'%';
+GRANT CREATE ROUTINE ON moz.* TO 'moz_user'@'%';
+GRANT ALTER ROUTINE ON moz.* TO 'moz_user'@'%';
+GRANT EVENT ON moz.* TO 'moz_user'@'%';
+GRANT TRIGGER ON moz.* TO 'moz_user'@'%';
+

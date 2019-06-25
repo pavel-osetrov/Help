@@ -1,0 +1,7 @@
+# show only matches
+grep -o <pattern> <file>
+
+EXAMPLES
+--------
+# рекурсивно искать в файлах и вывести первую колонку без дубликатов
+grep -r <string> . | awk -F":" '{print $1}' | uniq

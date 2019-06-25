@@ -1,0 +1,2 @@
+# GU mapping export
+mysql -utimofey -p phoenix_kpi -e "SELECT DISTINCT r.region_name, b.branch, nri_siteid, nri_band, nri_bs_number, geounit_id, rcn, cell_id, vendor FROM bad_cells_fact d JOIN QSC_branch b on b.branch_id = d.branch_id JOIN qsc_region r on r.region_id = b.region_id" -B > GU_map.tsv

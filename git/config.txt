@@ -1,0 +1,11 @@
+# set name
+git config --global user.name "timofey"
+
+# set email
+git config --global user.email "gavryutenko.timofey.gennadievich@huawei.com"
+
+# unset alias
+git config --global --unset alias.trololo
+
+# set nice log
+git config --global alias.hist "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"

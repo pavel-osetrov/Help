@@ -1,0 +1,37 @@
+# show
+show databases;
+show tables from information_schema;
+show columns from information_schema.TABLES;
+show columns from information_schema.COLUMNS;
+
+# select
+select * from information_schema.TABLES
+select * from information_schema.VIEWS
+select * from information_schema.ROUTINES
+select * from information_schema.COLUMNS
+
+# show
+SHOW FULL COLUMNS FROM <table_name>;
+SHOW TABLE STATUS LIKE '%<table_name>%';
+SHOW CREATE TABLE <table_name>;
+
+# table size
+SELECT 
+    table_name AS `Table`, 
+    round(((data_length) / 1024 / 1024), 2) `data MB`, 
+    round(((index_length) / 1024 / 1024), 2) `index MB` ,
+    round(((data_length + index_length) / 1024 / 1024), 2) `data+index MB`
+FROM information_schema.TABLES 
+WHERE table_schema = "phoenix_kpi"
+    AND table_name like 'bad_cells_%';
+	
+# tables sizes
+SELECT 
+     table_schema as `Database`, 
+     table_name AS `Table`, 
+     round(((data_length + index_length) / 1024 / 1024), 2) `Size in MB` 
+FROM information_schema.TABLES 
+ORDER BY (data_length + index_length) DESC;
+
+# refresh info about indexes
+ANALYZE TABLE <tablename>;

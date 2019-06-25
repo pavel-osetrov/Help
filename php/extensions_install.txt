@@ -1,0 +1,39 @@
+# установка через pecl
+#======================
+1. скачать необходимые пакеты системным пакетным менеджером
+apk update
+apk search php7-dev
+apk add php7-dev gcc g++ make
+apk add libssh2-dev
+
+2. установить нужное расширение через pecl
+pecl search ssh2
+pecl install ssh2-1.1.2
+	# -f перезапишет установленное расширение, -o установит все зависимости
+	pecl install -of ssh2-1.1.2
+
+3. добавить установленное расширение в ini файл
+docker-php-ext-enable ssh2
+
+
+# установка через make
+#======================
+1. скачать необходимые пакеты системным пакетным менеджером
+apk update
+apk search <пакет>
+apk add <пакет(ы)>
+
+2. скачать исходники, например в /tmp, и перейти в папку с этими исходниками
+wget https://pecl.php.net/get/mailparse
+tar -xvzf mailparse
+cd mailparse-3.0.3/
+
+3. выполнить перечень команд на установку расширения
+phpize
+./configure --enable-mailparse
+make clean
+make
+make install
+
+4. добавить установленное расширение в ini файл
+docker-php-ext-enable mailparse
