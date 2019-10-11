@@ -9,3 +9,6 @@ git config --global --unset alias.trololo
 
 # set nice log
 git config --global alias.hist "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+# push into non bare repository
+to push into non bare repository, set this config "receive.denyCurrentBranch updateInstead" in the repository you want to push in

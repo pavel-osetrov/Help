@@ -1,0 +1,73 @@
+set
+get
+del
+exists
+expire
+incr
+
+getbit bitmap 2  # returns 3
+setbit bitmap 2 1
+bitcount bitmap  # returns 1
+
+pfadd hll 1 2 3 4
+pfcount hll  # returns 4
+pfadd hll 5 6 1
+pfcount hll  # returns 6 (1 duplicates)
+pfmerge hll hll2
+pfcount hll
+
+lpush
+lpop
+ltrim -1 0
+blpop
+rpoplpush
+
+hmset map id 1 name tim
+hmset user.id:1 id 1 name tim
+hgetall
+hget map name
+
+sadd set test
+
+zadd test 1 test 2 test1
+zrange test 0 -1
+zrange test 0 -1 withscores
+zrangebyscore test 3 +inf
+
+publish subscribe
+-----------------
+-
+
+stream
+------
+xadd
+xread
+
+transactions
+------------
+multi
+exec
+discard
+
+PHP client
+----------
+predis (recomended)
+phpredis (faster)
+
+re-use connections
+------------------
+twemproxy
+
+pipelining
+----------
+multy command in a moment
+
+modules
+-------
+TimeSeries  # timestamp => событие
+ResiSearch  # полнотекстовый поиск
+Redis Graph  # работа с графами
+
+
+
+

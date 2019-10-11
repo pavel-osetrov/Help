@@ -4,8 +4,21 @@ yum check-update
 # install
 yum install <packadge>
 
-# list
-yum list instaled
+# remove
+yum remove <packadge>
 
-#search
+# list
+yum list installed
+
+# search
 yum search <packadge>
+
+# repos
+yum repolist
+ls /etc/yum.repos.d/
+
+# list all packages in specified repo
+yum repo-pkgs <perosioty> list
+
+# install package from specified repo
+yum --enablerepo=<perosioty> install <packadge>

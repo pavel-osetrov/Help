@@ -1,2 +1,5 @@
 # искать обычные файлы по имени
 find /var/www -type f -name "reports_lvl_2_nssmob.php"
+
+# remove files older than today+3days
+find /mnt/backup/mysql/ -type f -mtime +3 -exec rm {} \;

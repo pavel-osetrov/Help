@@ -1,0 +1,15 @@
+# run in container
+docker run --name otus-mongo -p27017:27017 -d mongo
+
+# GUI client
+https://robomongo.org/
+
+#
+show dbs  // show databases
+use youtube  // open db 'youtube', or create if not exist
+show collections  // show collections
+db.createCollection("channel")  //create collection with name 'channel'
+db.channel.insertOne({"id": 1,"name": "HoHoHo","categoty": "humor"})  // insert data
+db.channel.find()  // select data
+db.channel.deleteMany({"name": {$exists: false}})  // delete documents where field 'name' doesn't exist
+db.dropDatabase()  // drops current database

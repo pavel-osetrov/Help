@@ -35,3 +35,6 @@ create user timofey with createdb password 'password';
 # list users/roles
 select * from pg_roles;
 
+# clear table and reset sequence
+delete from movie where 1=1;
+alter sequence movie_movie_id_seq restart with 1

@@ -18,3 +18,9 @@ service sshd restart
 
 # exim
 systemctl restart exim
+
+# start the daemon by default when the system boots
+systemctl enable <service>
+
+# turn off autostart on boot
+systemctl disable <service>

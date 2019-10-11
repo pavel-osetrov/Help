@@ -11,3 +11,6 @@ git log -p -- <файл>
 
 # file change history with diff including remane history
 git log --follow -p -- <файл>
+
+# Changes made in commit
+git diff COMMIT~ COMMIT will show you the difference between that COMMIT's ancestor and the COMMIT

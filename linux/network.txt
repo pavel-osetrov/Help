@@ -1,0 +1,38 @@
+# show routes
+ip route
+
+# add route
+1. add temp route with command: "ip route add 172.16.5.0/24 via 10.0.0.101 dev eth0"
+2. add permanent static route by adding this line: "172.16.5.0/24 via 10.0.0.101 dev eth0" to the file of corresponding interface (in this case "eth0"): "/etc/sysconfig/network-scripts/route-eth0"
+
+# delete route
+ip route del 122.252.228.38/32
+
+# firewall
+sudo firewall-cmd --state
+sudo systemctl status firewalld
+sudo systemctl stop firewalld
+sudo systemctl start firewalld
+
+# firewall config of all zones
+sudo firewall-cmd --list-all-zones
+
+# add service
+sudo firewall-cmd --zone=dcn --add-service=samba
+
+# allow all
+sudo firewall-cmd --permanent --zone=public --set-target=ACCEPT
+
+# firewall add port forwarding
+sudo firewall-cmd --zone=dcn --add-forward-port=port=49001:proto=tcp:toport=80:toaddr=172.21.232.13
+sudo firewall-cmd --zone=dcn --permanent --add-forward-port=port=49001:proto=tcp:toport=80:toaddr=172.21.232.13
+sudo firewall-cmd --zone=dcn --add-forward-port=port=49002:proto=tcp:toport=80:toaddr=192.168.16.22
+sudo firewall-cmd --zone=dcn --permanent --add-forward-port=port=49002:proto=tcp:toport=80:toaddr=192.168.16.22
+sudo firewall-cmd --zone=internal --add-forward-port=port=8080:proto=tcp:toport=80:toaddr=10.128.16.39
+sudo firewall-cmd --zone=internal --permanent --add-forward-port=port=8080:proto=tcp:toport=80:toaddr=10.128.16.39
+
+# busy ports
+netstat -tulpn | grep LISTEN
+
+# check ip port availavility
+nc -vz 192.168.181.125 1521

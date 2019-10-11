@@ -14,3 +14,39 @@ SHOW VARIABLES LIKE 'wait_timeout';
 
 
 connect_timeout — количество секунд, в течение которых сервер mysql ожидает пакет подключения, прежде чем прервать соединение.
+
+
+// изменил 30 на 60
+select @@global.net_read_timeout, @@local.net_read_timeout, @@session.net_read_timeout;
+set @@global.net_read_timeout = 60;
+set @@local.net_read_timeout = 60;
+set @@session.net_read_timeout = 60;
+
+// изменил 28800 на 60
+select @@global.interactive_timeout, @@local.interactive_timeout, @@session.interactive_timeout;
+set @@global.interactive_timeout = 60;
+set @@local.interactive_timeout = 60;
+set @@session.interactive_timeout = 60;
+select @@global.wait_timeout, @@local.wait_timeout, @@session.wait_timeout;
+set @@global.wait_timeout = 60;
+set @@local.wait_timeout = 60;
+set @@session.wait_timeout = 60;
+
+// изменил 10 на 60
+select @@global.connect_timeout;
+set @@global.connect_timeout = 60;
+
+// не менял
+select @@global.net_buffer_length, @@local.net_buffer_length, @@session.net_buffer_length;
+set @@global.net_buffer_length = 16384;
+set @@local.net_buffer_length = 16384;
+set @@session.net_buffer_length = 16384;
+
+// изменил 60 на 600
+select @@global.net_write_timeout, @@local.net_write_timeout, @@session.net_write_timeout;
+set @@global.net_write_timeout = 600;
+set @@local.net_write_timeout = 600;
+set @@session.net_write_timeout = 600;
+
+
+
