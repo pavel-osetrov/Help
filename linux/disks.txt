@@ -1,0 +1,53 @@
+# show disks/partitions info
+fdisk -l
+lsblk
+parted -l
+cfdisk
+
+# make file system
+mkfs.ext4 /dev/sdb1
+
+# check
+fsck /dev/sdb1
+
+# mount
+mkdir /mnt/newhome
+mount /dev/sdb1 /mnt/newhome
+
+# edit /etc/fstab file
+add line '/dev/sdb1 /home ext4 defaults 0 0'
+
+# implement /etc/fstab file
+mount -a
+
+# show UUID of partitions
+blkid
+
+EXAMPLE (на примере переноса домашних калатогов на новый диск)
+-------
+1. Создать раздел командой `fdisk /dev/sdb` (в интерактивном режиме)
+2. Форматировать раздел `mkfs.ext4 /dev/sdb1`
+3. Примонтировать новый раздел временно в /mnt/newhome вот так: `mkdir /mnt/newhome && mount /dev/sdb1 /mnt/newhome`
+4. Скопировать домашние каталоги на новый диск (во временно примонтированную директорию) `rsync -avz /home/ /mnt/newhome/`
+5. Редактировать файл /etc/fstab: удалить/закомментировать старую точку монтирования /home (если есть), и добавить новую точку монтирования, добавив строчку типа `/dev/sdb1 /home ext4 defaults 0 0`
+6. Применить изменения командой `mount -a`
+
+# mount samba
+mount -t cifs //10.250.252.226/noc_share -o username=xxxxxxx,password='xxxxxxx' /mnt/test
+
+FSTAB file (чтобы изменения сохранились после ребута)
+-------
+1. Установить необходимый пакет: `yum install cifs-utils`
+2. Создать файлы с логинами/паролями, например: `touch /root/samba_vm25_auth && chmod 600 /root/samba_vm25_auth`
+Пример содержимого файла:
+username=myusername
+password=mypassword
+3. Добавить конфигурацию в файл `/etc/fstab`, пример:
+//10.209.234.155/kpi /home/smb cifs user,rw,credentials=/root/samba_vm25_auth 0 0
+где:
+//10.209.234.155/kpi - шара
+/home/smb - куда монтировать
+cifs - тип файловой системы
+user - доступна всем
+rw - чтение+запись
+credentials=/root/samba_vm25_auth - путь до логинпароля

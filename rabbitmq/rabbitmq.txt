@@ -1,0 +1,2 @@
+# service
+systemctl status rabbitmq-server.service

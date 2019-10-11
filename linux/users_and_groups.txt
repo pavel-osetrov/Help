@@ -43,3 +43,10 @@ visudo
 
 # list sudoers
 cat /etc/sudoers
+
+CLEAR SESSION
+-------------
+command "who -la" will show users and PID
+use "kill $pid" to close session of specified $pid
+or use "pkill -9 -t $term" ($term - can be pts/o, tty1, e.t.c)
+

@@ -3,3 +3,6 @@ select * from v$version;
 
 # all accessible tables
 SELECT * FROM all_tables;
+
+# all accessible views
+SELECT * FROM all_views;

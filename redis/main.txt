@@ -1,0 +1,27 @@
+# connect
+redis-cli
+
+# easiest commands
+set, get, del
+
+# show all keys
+scan 0
+keys *  // (dangerious command - blocks server)
+
+# scan
+scan 0 count 10  // returns current cursor position and first 10 keys
+scan 0 match key_name_pattern  // key_name_pattern is searching pattern
+
+# delete all (php)
+public function deleteKeysByPattern(string $pattern)
+{
+    $cursor = 0;
+    do {
+        $scanResult = $this->redisClient->scan($cursor, ['match' => "$pattern"]);
+        $cursor = $scanResult[0];
+        $keys = $scanResult[1];
+        if (!empty($keys)) {
+            $this->redisClient->del($keys);
+        }
+    } while ($cursor != 0);
+}
